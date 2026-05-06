@@ -76,7 +76,7 @@ export default function Login() {
                 style={s.input}
                 type="email"
                 name="email"
-                placeholder="your@email.com"
+                placeholder="Enter your email"
                 value={form.email}
                 onChange={handleChange}
               />
