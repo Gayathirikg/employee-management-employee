@@ -11,7 +11,7 @@ export default function Login() {
   const { login } = useAuth()
   const navigate  = useNavigate()
 
-  const handleChange = (e) => {
+  const handleChange = (e) => {  
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
