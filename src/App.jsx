@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard.jsx'
 import ClockInOut from './pages/ClockInOut.jsx'
 import Profile from './pages/Profile.jsx'
 import AttendanceHistory from './pages/AttendanceHistory.jsx'
+import EmployeeChat from './pages/EmployeeChat.jsx'   
+
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useAuth()
@@ -33,6 +35,10 @@ export default function App() {
         <Route path="/attendance" element={
           <ProtectedRoute><AttendanceHistory /></ProtectedRoute>
         } />
+
+           <Route path="/chat" element={
+          <ProtectedRoute><EmployeeChat /></ProtectedRoute>
+        } />  
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

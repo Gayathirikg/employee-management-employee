@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useAuth } from '../context/AuthContext.jsx'
 import API from '../api/axios.js'
+import socket from '../socket.js'
 
 export default function Login() {
   const [form, setForm]= useState({ email: '', password: '' })
@@ -31,6 +32,9 @@ export default function Login() {
     try {
       const { data } = await API.post('/auth/employee-login', form)
       login(data.token, data.employee)
+
+        socket.connect()
+        
       toast.success(`Welcome, ${data.employee.name}! `)
       navigate('/')
     } catch (err) {

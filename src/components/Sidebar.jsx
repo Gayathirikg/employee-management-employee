@@ -1,11 +1,14 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext.jsx'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
+import socket from '../socket.js';
 
 const navItems = [
   { path: '/', icon: '🏠', label: 'Dashboard' },
   { path: '/profile', icon: '👤', label: 'My Profile'},
   { path: '/clock',  icon: '⏱️', label: 'Clock In / Out' },
   { path: '/attendance', icon: '📅', label: 'Attendance History'},
+    { path: '/chat',icon: '💬', label: 'Chat'}, 
+
 ]
 
 export default function Sidebar() {
@@ -14,9 +17,10 @@ export default function Sidebar() {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
+  socket.disconnect(); 
+  logout();
+  navigate('/login');
+};
 
   const Initials = (name = '') =>
     name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
